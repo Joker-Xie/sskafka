@@ -2,14 +2,15 @@ package com.meicloud.flink.udf;
 
 import com.meicloud.flink.JavaConstantUtils;
 import com.meicloud.spark.entity.CaseVo.*;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
 import org.apache.flink.table.functions.AggregateFunction;
 import org.apache.flink.table.functions.ScalarFunction;
 import org.apache.flink.table.functions.TableFunction;
-import scala.Tuple2;
-import scala.collection.Iterator;
+
+import java.util.Iterator;
 
 
 public class UdfUtils {
@@ -21,9 +22,9 @@ public class UdfUtils {
      * @param flink
      */
     public static void registerUDF(Tuple2<String, ExecutorConfigVo> configMap, StreamTableEnvironment flink) {
-        switch (configMap._1) {
+        switch (configMap.f0) {
             case JavaConstantUtils.EXECUTE_SQL:
-                ExeSqlConfigVo exeSqlConfigVo = (ExeSqlConfigVo) configMap._2;
+                JavaExeSqlConfigVo exeSqlConfigVo = (JavaExeSqlConfigVo) configMap.f1;
                 Iterator iter = exeSqlConfigVo.udfList().iterator();
                 while (iter.hasNext()) {
                     UDFConfigVo vo = (UDFConfigVo) iter.next();
@@ -33,6 +34,8 @@ public class UdfUtils {
             case JavaConstantUtils.EXECUTE_SCALA:
                 break;
             case JavaConstantUtils.EXECUTE_PYTHON:
+                break;
+            default:
                 break;
         }
     }
@@ -63,6 +66,7 @@ public class UdfUtils {
                 default:
                     System.err.println("UDF function is mismatching!");
                     System.exit(-1);
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -39,6 +39,7 @@ object SchemaUtils {
     //    println(str2schema(schemaStr))
     //    val sql = "{\"src\":\"string\",\"date\":\"integer\",\"content\":\"string\",\"url\":\"string\",\"taskId\":\"integer\",\"picNum\":\"integer\",\"tags\":\"string\",\"itemId\":\"string\",\"subItemTid\":\"integer\",\"mark\":\"integer\",\"price\":\"integer\",\"userName\":\"string\",\"userArea\":\"string\",\"userLevel\":\"string\",\"buyFlag\":\"integer\",\"usefulCnt\":\"integer\",\"sendPlatform\":\"string\",\"props\":{},\"shopTid\":\"integer\",\"model\":\"string\",\"brand\":\"string\",\"category\":\"string\",\"fetchtime\":\"integer\",\"shopId\":\"string\",\"categoryId\":\"string\",\"shopName\":\"string\",\"rootCatId\":\"string\",\"itemCatId\":\"string\",\"piclinks\":\"string\",\"id\":\"string\",\"redo\":\"string\",\"from\":\"string\",\"to\":\"string\",\"commentType\":\"string\"}"
     //    println(str2schema(sql))
+    str2schema("""{"a": {"b": {"c": "string"},"e": "string"},"f": [{"a": "string"}]}""")
   }
 
   /*
@@ -57,6 +58,7 @@ object SchemaUtils {
     require(jvalue.isInstanceOf[JObject], s"Type must be JObject, but ${jvalue} found.")
     jvalue2datatype(jvalue).asInstanceOf[StructType]
   }
+
 
   private[this] def datatype2jvalue(dt: DataType): JValue = {
     dt match {

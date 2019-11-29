@@ -24,8 +24,6 @@ import java.lang.reflect.Method
 
 import com.meicloud.spark.entity.CaseVo._
 import com.meicloud.spark.log.EdpLogging
-import com.meicloud.spark.udf.UdfRegister
-import com.meicloud.spark.udf.UdfUtils.registerUDF
 import com.meicloud.spark.utils.ConstantUtils
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types._

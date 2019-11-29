@@ -62,6 +62,13 @@ object CaseVo {
                             udfList: ArrayBuffer[UDFConfigVo]
                            ) extends ExecutorConfigVo(executorType)
 
+  case class JavaExeSqlConfigVo(executorId: String,
+                                executorType: String,
+                                sqlContent: String,
+                                dataPrimary: String,
+                                udfList: java.util.List[UDFConfigVo]
+                               ) extends ExecutorConfigVo(executorType)
+
   case class UDFConfigVo(jarPath: String,
                          classPath: String,
                          classMethod: String,
@@ -193,7 +200,7 @@ object CaseVo {
                                jdbcUser: String,
                                jdbcPass: String,
                                jdbcTableName: String,
-                               registTableName:String,
+                               registTableName: String,
                                minPoolSize: Int,
                                maxPoolSize: Int,
                                acquireIncrement: Int,
@@ -220,5 +227,17 @@ object CaseVo {
                              esUser: String,
                              esPass: String
                            ) extends StaticInputSourceConfigVo(sourceType)
+
+  case class HiveStaticConfVo(
+                               sourceId: String,
+                               sourceType: String,
+                               hiveMetastoreUris: String,
+                               nameServices: String,
+                               nameServiceHosts: String,
+                               hiveUser: String,
+                               hivePasswd: String,
+                               hiveTableName: String,
+                               registTableName: String
+                             ) extends StaticInputSourceConfigVo(sourceType)
 
 }

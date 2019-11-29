@@ -14,7 +14,7 @@ public class JavaConstantUtils {
     //输入源 --KAFKA --参数>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public static final String VERSION = "universal";
     public static final String GROUP_ID = "group.id";
-    public static final String KAFKA_BOOTSTRAP_SERVER = "kafka.bootstrap.servers";
+    public static final String KAFKA_BOOTSTRAP_SERVER = "bootstrap.servers";
     public static final String STARTING_OFFSETS = "startingOffsets";
     public static final String ENDING_OFFSET = "endingOffsets";
     public static final String MAX_OFFSETS_PER_TRIGGER = "maxOffsetsPerTrigger";
